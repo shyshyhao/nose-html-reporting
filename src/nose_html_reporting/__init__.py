@@ -11,7 +11,7 @@ from jinja2 import FileSystemLoader
 from nose.exc import SkipTest
 from nose.plugins import Plugin
 import sys
-
+from datetime import datetime
 __version__ = '0.1.0'
 
 TEST_ID = re.compile(r'^(.*?)(\(.*\))$')
@@ -189,6 +189,7 @@ class HtmlReport(Plugin):
         self.report_file.write(self.jinja.get_template(os.path.basename(self.report_template_filename)).render(
             report=self.report_data,
             stats=self.stats,
+            timestamp=datetime.now().strftime("%Y/%m/%d %H:%M:%S"),
         ))
         self.report_file.close()
         if self.config.verbosity > 1:
