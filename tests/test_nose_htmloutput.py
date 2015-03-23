@@ -8,7 +8,7 @@ TIMEOUT = 10
 
 def test_sample():
     with TestProcess(
-        'coverage', 'run', 'tests/nosetests.py', '--verbose', '--with-html', '--html-file=sample.html',
+        'coverage', 'run', 'tests/nosetests.py', '--verbose', '--with-html', '--html-report=sample.html',
         'tests/test_sample.py'
     ) as proc:
         with dump_on_error(proc.read):
