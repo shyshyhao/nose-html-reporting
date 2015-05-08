@@ -13,7 +13,7 @@ from nose.exc import SkipTest
 from nose.plugins import Plugin
 import sys
 
-__version__ = '0.1.0'
+__version__ = '0.2.1b'
 
 TEST_ID = re.compile(r'^(.*?)(\(.*\))$')
 
