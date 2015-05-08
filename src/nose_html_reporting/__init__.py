@@ -11,9 +11,10 @@ from jinja2 import Environment
 from jinja2 import FileSystemLoader
 from nose.exc import SkipTest
 from nose.plugins import Plugin
+from datetime import datetime
 import sys
 
-__version__ = '0.1.0'
+__version__ = '0.2.1b'
 
 TEST_ID = re.compile(r'^(.*?)(\(.*\))$')
 
@@ -222,6 +223,8 @@ class HtmlReport(Plugin):
         self.report_file.write(self.jinja.get_template(os.path.basename(self.report_template_filename)).render(
             report=self.report_data,
             stats=self.stats,
+            # Timestamp available in templates, to use it when report is generated
+            timestamp=datetime.now().strftime("%Y/%m/%d %H:%M:%S"),
             rawoutput=self._format_output(self.complete_global_output())
         ))
         self.report_file.close()
