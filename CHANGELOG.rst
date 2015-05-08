@@ -13,3 +13,8 @@ Changelog
 * Now plugin catches not only test logging messages, but messages called before test run. Store to separate variable
 * New report template is default one
 * Added test run time to context of the report
+
+0.2.1b (2015-05-08)
+-----------------------------------------
+
+* Added timestamp to the report
