@@ -224,7 +224,7 @@ class HtmlReport(Plugin):
             report=self.report_data,
             stats=self.stats,
             # Timestamp available in templates, to use it when report is generated
-            timestamp=datetime.now().strftime("%Y/%m/%d %H:%M:%S"),
+            timestamp=datetime.utcnow().strftime("%Y/%m/%d %H:%M UTC"),
             rawoutput=self._format_output(self.complete_global_output())
         ))
         self.report_file.close()
