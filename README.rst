@@ -21,7 +21,7 @@ Usage
   --html-report=FILE    Path to html file to store the report in. Default is
                         nosetests.html in the working directory
   --html-report-template=FILE      Path to jinja2 file to get the report template from. Default is
-                        templates/report.html from the package working directory
+                        templates/report2.jinja2 from the package working directory
 
 Development
 ===========
@@ -34,6 +34,6 @@ Example
 =======
 To execute tests::
 
-    nosetests tests/test_sample.py --with-html --html-report=nose_report2_test.html --html-report-template=src/nose_htmlreport/templates/report2.jinja2
+    nosetests tests/test_sample.py --with-html --html-report=nose_report2_test.html --html-report-template=src/nose_html_reporting/templates/report2.jinja2
 
 .. image:: https://raw.githubusercontent.com/lysenkoivan/nose-html-reporting/master/docs/sample.png

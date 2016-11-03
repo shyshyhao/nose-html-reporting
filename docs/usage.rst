@@ -2,6 +2,6 @@
 Usage
 =====
 
-To use nose-htmloutput in a project::
+To use nose-html-reporting in a project::
 
-	import nose_htmloutput
+	import nose_html_reporting

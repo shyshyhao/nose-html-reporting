@@ -4,4 +4,4 @@ Reference
 .. toctree::
     :glob:
 
-    nose_htmloutput*
+    nose_html_reporting*
