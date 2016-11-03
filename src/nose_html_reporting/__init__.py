@@ -3,16 +3,15 @@ import re
 import codecs
 import inspect
 import os
+import sys
 import traceback
+
 from collections import defaultdict
 from datetime import datetime
-
 from jinja2 import Environment
 from jinja2 import FileSystemLoader
 from nose.exc import SkipTest
 from nose.plugins import Plugin
-from datetime import datetime
-import sys
 
 __version__ = '0.2.1b'
 
@@ -105,6 +104,7 @@ class HtmlReport(Plugin):
     score = 2000
     encoding = 'UTF-8'
     report_file = None
+    start_time = datetime.now()
 
     # stdout0 = None
     # stderr0 = None
@@ -122,7 +122,6 @@ class HtmlReport(Plugin):
         self.stderr_redirector = OutputRedirector(sys.stderr)
         self.test_stdout_redirector = OutputRedirector(sys.stdout)
         self.test_stderr_redirector = OutputRedirector(sys.stderr)
-
         self.verbosity = verbosity
 
     def startTest(self, test):
@@ -134,7 +133,6 @@ class HtmlReport(Plugin):
         self.test_stderr0 = sys.stderr
         sys.stdout = self.test_stdout_redirector
         sys.stderr = self.test_stderr_redirector
-
         self.test_start_time = datetime.now()
 
     def complete_test_output(self, err_msg='', traceback=''):
@@ -225,6 +223,8 @@ class HtmlReport(Plugin):
             stats=self.stats,
             # Timestamp available in templates, to use it when report is generated
             timestamp=datetime.utcnow().strftime("%Y/%m/%d %H:%M UTC"),
+            # Elapsed time available in templates, to use it when report is generated
+            elapsed_time=self._elapsed_time(),
             rawoutput=self._format_output(self.complete_global_output())
         ))
         self.report_file.close()
@@ -299,6 +299,11 @@ class HtmlReport(Plugin):
             'shortDescription': test.shortDescription(),
             'time': str(datetime.now() - self.test_start_time),
         })
+
+    def _elapsed_time(self):
+        m, s = divmod((datetime.now() - self.start_time).seconds, 60)
+        h, m = divmod(m, 60)
+        return "%dh %02dm %02ds" % (h, m, s) if h > 0 else "%dm %02ds" % (m, s)
 
     def _format_output(self, o):
         if isinstance(o, str):
