@@ -13,7 +13,7 @@ from jinja2 import FileSystemLoader
 from nose.exc import SkipTest
 from nose.plugins import Plugin
 
-__version__ = '0.2.1b'
+__version__ = '0.2.2'
 
 TEST_ID = re.compile(r'^(.*?)(\(.*\))$')
 
