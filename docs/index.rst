@@ -1,5 +1,5 @@
-Welcome to nose-htmloutput's documentation!
-======================================
+Welcome to nose-html-reporting's documentation!
+===============================================
 
 Contents:
 

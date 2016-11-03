@@ -4,4 +4,4 @@ Installation
 
 At the command line::
 
-    pip install nose-htmloutput
+    pip install nose-html-reporting

@@ -18,3 +18,8 @@ Changelog
 -----------------------------------------
 
 * Added timestamp to the report
+
+0.2.2 (2016-11-03)
+-----------------------------------------
+
+* Added elapsed time to the report

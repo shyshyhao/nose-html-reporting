@@ -17,8 +17,8 @@ if os.getenv('SPELLCHECK'):
 
 source_suffix = '.rst'
 master_doc = 'index'
-project = u'nose-htmloutput'
-copyright = u'2014, Ionel Cristian Mărieș'
+project = u'nose-html-reporting'
+copyright = u'2015, Ivan Lysenko'
 version = release = re.findall(
     'version="(.*)"',
     open(os.path.join(os.path.dirname(__file__), '../setup.py')).read()
@@ -38,5 +38,5 @@ html_sidebars = {
 }
 html_short_title = '%s-%s' % (project, version)
 html_theme_options = {
-    'githuburl': 'https://github.com/ionelmc/nose-htmloutput/'
+    'githuburl': 'https://github.com/lysenkoivan/nose-html-reporting/'
 }
