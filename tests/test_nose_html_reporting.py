@@ -109,5 +109,5 @@ def test_sample():
     timestamp_pattern = r'<h1>.* \| [0-9]{4}/[0-9]{2}/[0-9]{2} [0-9]{2}:[0-9]{2} UTC.*</h1>'
     assert re.search(timestamp_pattern, output)
 
-    elapsed_time_pattern = r'<h1>.* \| Elapsed time: .*[0-9]+m [0-9]+s.*</h1>'
+    elapsed_time_pattern = r'<h1>.* \| Elapsed time: [0-9]{1,2}:[0-9]{2}:[0-9]{2}\.[0-9]{6}.*</h1>'
     assert re.search(elapsed_time_pattern, output)
