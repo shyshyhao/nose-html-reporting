@@ -224,7 +224,7 @@ class HtmlReport(Plugin):
             # Timestamp available in templates, to use it when report is generated
             timestamp=datetime.utcnow().strftime("%Y/%m/%d %H:%M UTC"),
             # Elapsed time available in templates, to use it when report is generated
-            elapsed_time=self._elapsed_time(),
+            elapsed_time=str(datetime.now() - self.start_time),
             rawoutput=self._format_output(self.complete_global_output())
         ))
         self.report_file.close()
@@ -299,11 +299,6 @@ class HtmlReport(Plugin):
             'shortDescription': test.shortDescription(),
             'time': str(datetime.now() - self.test_start_time),
         })
-
-    def _elapsed_time(self):
-        m, s = divmod((datetime.now() - self.start_time).seconds, 60)
-        h, m = divmod(m, 60)
-        return "%dh %02dm %02ds" % (h, m, s) if h > 0 else "%dm %02ds" % (m, s)
 
     def _format_output(self, o):
         if isinstance(o, str):
